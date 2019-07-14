@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "nodemon": "nodemon index",
-    "client":"npm start --prefix client",
-    "combine":"concurrently \"npm run nodemon\" \"npm run client\""
+    "client": "npm start --prefix client",
+    "combine": "concurrently \"npm run nodemon\" \"npm run client\"",
+    "develop": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [
     "Mongodb",

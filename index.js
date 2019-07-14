@@ -2,6 +2,7 @@ const express = require('express');
 const bodyparser = require('body-parser');
 const mongoose = require('mongoose');
 const TodoRoute = require('./api/router/todoroute');
+const path = require('path');
 const config = require('./config');
 const app = express();
 const port = process.env.PORT || 5000;
@@ -26,6 +27,15 @@ app.use((req, res, next) => {
   next();
 });
 app.use('/todo', TodoRoute);
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+  app.get('*', (req, res) => {
+    res
+      .status(200)
+      .sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 app.use((req, res, next) => {
   const error = new Error('Page Not Found');
