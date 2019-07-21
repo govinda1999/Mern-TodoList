@@ -14,7 +14,7 @@ export default class Todo extends Component {
                   <li className='list-group-item' key={item._id}>
                     <div className='row pt-3'>
                       <div className='col-8'>
-                        <h5 className=''>{item.title}</h5>
+                        <h5 className='text-justify'>{item.title}</h5>
                       </div>
                       <div className='col-2'>
                         <button
